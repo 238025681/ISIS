@@ -32,26 +32,27 @@ public class Engine {
         String input = scan.nextLine();
         while (!input.contains("apocalypse()")) {
             String[] params = input.split("\\.");
-            String object = params[0];
+            String name = params[0];
             String command = params[1];
             
-            if (!object.equals("world")) {
+            if (!name.equals("world")) {
                 if (command.contains("create")) {
                     Pattern patt =  Pattern.compile("\\b(\\()([a-zA-Z0-9 \\,\\s]+)");
                     Matcher match = patt.matcher(command);
                     
                     while (match.find()) {
                         
-                        String[] fields = match.group(2).trim().split(",");
+                        String[] parameters = match.group(2).trim().split(",");
                         
-                        world.create(object, fields);
+                        world.create(name, parameters);
                         
                     }
                 }
+                
                 if (command.contains("attack")) {
                     String[] t = command.split("\\(");
                     String  target = t[1].substring(0, t[1].length() - 1);
-                    Group attaker = world.getGroup().get(object);
+                    Group attaker = world.getGroup().get(name);
                     Group targetGroup = world.getGroup().get(target);
                     attaker.attack(targetGroup);
                     
@@ -60,7 +61,7 @@ public class Engine {
                 
             }
             
-            if (object.equals("world")) {
+            if (name.equals("world")) {
                 
             }
             
