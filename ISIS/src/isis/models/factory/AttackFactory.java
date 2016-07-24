@@ -15,6 +15,7 @@ public class AttackFactory {
         
         if (name.equals("Paris")) {
             return new Paris();
+            
         } else if (name.equals("SU24")) {
             return new SU24();
         }

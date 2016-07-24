@@ -62,6 +62,7 @@ public class GroupImpl implements Group {
         this.attack = attack;
     }
 
+    @Override
     public int getHealth() {
         return health;
     }

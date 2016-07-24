@@ -5,10 +5,22 @@
  */
 package isis.models;
 
+import isis.interfaces.War;
+
 /**
  *
  * @author chobi
  */
-public class Kamikaze {
+public class Kamikaze implements War{
+
+    @Override
+    public void addDmg() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addHealth() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

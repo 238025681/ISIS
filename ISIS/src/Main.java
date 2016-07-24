@@ -1,9 +1,7 @@
 
-import isis.interfaces.World;
+import isis.models.CommandInterpreter;
 import isis.models.Engine;
 import isis.models.WorldImpl;
-import isis.interfaces.Command;
-import isis.models.CommandImpl;
 import java.io.IOException;
 
 /*
@@ -19,9 +17,9 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException{
        
-            Engine engine = new Engine(new WorldImpl(), new CommandImpl());
+            Engine engine = new Engine(new WorldImpl());
             
-            engine.run();
+            engine.start();
       
     }
 }

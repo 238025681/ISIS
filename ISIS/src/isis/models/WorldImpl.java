@@ -39,12 +39,35 @@ public class WorldImpl implements World {
 
     @Override
     public void create(String name, String... groupParams) {
-        int health = Integer.parseInt(groupParams[0]);
-        int damage = Integer.parseInt(groupParams[1]);
-        War warEffect = WarEffectFactory.getWarEffect(groupParams[2]);
-        Attack attack = AttackFactory.getAttack(groupParams[3]);
+      
+        int health = Integer.parseInt(groupParams[0].trim());
+        int damage = Integer.parseInt(groupParams[1].trim());
+        War warEffect = WarEffectFactory.getWarEffect(groupParams[2].trim());
+        Attack attack = AttackFactory.getAttack( groupParams[3].trim());
         
         this.groups.put(name, new GroupImpl(name, health, damage, warEffect, attack));
     }
+
+    @Override
+    public String toString() {
+        //Group Cenko: 50 HP, 15 Damage
+        StringBuilder sb = new StringBuilder();
+        
+        groups.entrySet().stream()
+                .sorted((g1, g2) -> Integer.compare(g1.getValue().getHealth(), g2.getValue().getHealth()))
+                .forEach(s1 ->{
+                
+                    sb.append(String.format("Group %s: %d HP, %d Damage", 
+                            s1.getKey()
+                            , s1.getValue().getHealth()
+                            , s1.getValue().getDamage()));
+                    
+                    sb.append(System.lineSeparator());
+                });
+        
+        return sb.toString();
+    }
+    
+    
 
 }
